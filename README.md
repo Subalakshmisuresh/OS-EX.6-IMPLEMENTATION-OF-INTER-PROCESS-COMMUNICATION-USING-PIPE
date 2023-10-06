@@ -19,49 +19,39 @@ write C programs to illustrate IPC using pipes mechanisms
 
 ##  PROGRAM:
 ```
-
 #include <stdio.h>
-
 int main()
-
 {
 
-int fd[2],child; char a[10];
-
-printf("\n Enter the string:");
-
-scanf("%s",a);
-
-pipe(fd);
-
-child=fork();
-
-if(!child)
-
+  int fd[2],child; char a[10];
+  printf("\nEnter the string : ");
+  scanf("%s",a);
+  pipe(fd);
+  child=fork();
+  if(!child)
 {
-
-close(fd[0]);
-
-write(fd[1],a,5); wait(0);
-
+    close(fd[0]);
+    write(fd[1],a,5); wait(0);
 }
 
-else
+  else
 
 {
-
-close(fd[1]);
-
-read(fd[0],a,5);
-printf("The string received from pipe is: %s",a);
-
+   close(fd[1]);
+    read(fd[0],a,5); printf("The string received from pipe is : %s",a);
 }
 
 return 0;
-
 }
+
+
+
 ```
 ##  OUTPUT:
+
+![Screenshot (130)](https://github.com/Subalakshmisuresh/OS-EX.6-IMPLEMENTATION-OF-INTER-PROCESS-COMMUNICATION-USING-PIPE/assets/121957896/259a4385-1cb6-4adf-96ee-540c85803203)
+
+
 
 
 
